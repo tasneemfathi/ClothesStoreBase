@@ -14,11 +14,11 @@ import kotlinx.serialization.json.Json
 
 fun createHttpClient(localeStorage: TokenLocaleStorage): HttpClient {
     return HttpClient(createPlatformHttpClient()) {
-//        defaultRequest {
-//            headers.append("language", "ar")
-//            headers.append("Accept", "application/json")
-//            headers.append("Content-Type", "application/x-www-form-urlencoded")
-//        }
+        defaultRequest {
+            headers.append("language", "ar")
+            headers.append("Accept", "application/json")
+            headers.append("Content-Type", "application/x-www-form-urlencoded")
+        }
         install(Logging){
             logger = object : Logger {
                 override fun log(message: String) {
