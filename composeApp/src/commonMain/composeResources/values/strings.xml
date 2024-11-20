@@ -1,0 +1,38 @@
+<resources>
+    <string name = "welcome_static_text" >Welcome Lets Start ... </string>
+    <string name="empty" />
+    <string name = "error_empty" >رقم الجوال لا يمكن أن يكون فارغًا</string>
+    <string name = "error_mobile_prefix" >رقم الموبايل يجب أن يكون مبدوء ب 5</string>
+    <string name = "error_mobile_length" >رقم الجوال يجب أن يتكون من 9 أرقام</string>
+    <string name = "error_mobile_digits" >رقم الجوال يجب أن يحتوي على أرقام فقط</string>
+    <string name = "users_title" >Users</string>
+    <string name = "for_more_info" >For More Info</string>
+    <string name = "scan_qr" >Scan QR</string>
+    <string name = "name" >Name</string>
+    <string name = "email" >Email</string>
+    <string name = "bio" >Bio</string>
+    <string name = "update" >Update</string>
+    <string name = "introTitle1" >We have a range of products that you can order.</string>
+    <string name = "introTitle2" >You can pay in a variety of ways.</string>
+    <string name = "introTitle3" >The fastest way to deliver orders</string>
+    <string name = "introDesc1" >The shape placed on a page will distract the reader from focusing on the external shape. The external shape of the text or the shape placed on a page will distract the reader from what he is reading. Therefore, using a method that looks</string>
+    <string name = "introDesc2" >The shape placed on a page will distract the reader from focusing on the external shape. The external shape of the text or the shape placed on a page will distract the reader from what he is reading. Therefore, using a method that looks</string>
+    <string name = "introDesc3" >The shape placed on a page will distract the reader from focusing on the external shape. The external shape of the text or the shape placed on a page will distract the reader from what he is reading. Therefore, using a method that looks</string>
+   <string name = "next" >Next</string>
+    <string name = "skip" >Skip</string>
+    <string name = "lets_start" >Lets Start</string>
+    <string name = "login" >تسجيل الدخول</string>
+    <string name = "login_lbl" >الرجااء ادخال رقم الجوال الخاص بك</string>
+    <string name = "username" >اسم المستخدم</string>
+    <string name = "mobile" >رقم الجوال</string>
+    <string name = "login_verify" >سيتم ارسال كود التفعيل الى رقم الجوال المدخل</string>
+    <string name = "send_verification" >ارسال كود التفعيل</string>
+    <string name = "verify_lbl" >الرجاء ادخال الرمز للمتابعة</string>
+    <string name = "verify_sblbl" >لقد أرسلنا رمز التحقق برسالة الى</string>
+    <string name = "resendCode" >إعادة إرسال الكود</string>
+    <string name = "send" >ارسال</string>
+
+
+
+
+</resources>

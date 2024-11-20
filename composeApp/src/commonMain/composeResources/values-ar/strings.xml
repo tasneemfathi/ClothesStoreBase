@@ -1,0 +1,29 @@
+<resources>
+    <string name = "welcome_static_text" >Welcome Lets Start ... </string>
+    <string name = "users_title" >Users</string>
+    <string name = "for_more_info" >For More Info</string>
+    <string name = "scan_qr" >Scan QR</string>
+    <string name = "name" >Name</string>
+    <string name = "email" >Email</string>
+    <string name = "bio" >Bio</string>
+    <string name = "update" >Update</string>
+    <string name = "introTitle1" >لدينا مجموعة من  المنتجات يمكنك طلبها</string>
+    <string name = "introTitle2" >يمكنك الدفع بطرق متنوعة</string>
+    <string name = "introTitle3" >أسرع طريقة لتوصيل الطلبات</string>
+    <string name = "introDesc1" >شكل توضع لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارج الشكل الخارج للنص أو شكل توضع لصفحة ما سيلهي القارئ عن التي يقرأها. ولذاستخدام طريقة تبدو</string>
+    <string name = "introDesc2" >شكل توضع لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارج الشكل الخارج للنص أو شكل توضع لصفحة ما سيلهي القارئ عن التي يقرأها. ولذاستخدام طريقة تبدو</string>
+    <string name = "introDesc3" >شكل توضع لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارج الشكل الخارج للنص أو شكل توضع لصفحة ما سيلهي القارئ عن التي يقرأها. ولذاستخدام طريقة تبدو</string>
+    <string name = "next" >التالي</string>
+    <string name = "skip" >تخطي</string>
+    <string name = "lets_start" >لنبدأ</string>
+    <string name = "login" >تسجيل الدخول</string>
+    <string name = "login_lbl" >الرجااء ادخال رقم الجوال الخاص بك</string>
+    <string name = "username" >اسم المستخدم</string>
+    <string name = "mobile" >رقم الجوال</string>
+    <string name = "login_verify" >سيتم ارسال كود التفعيل الى رقم الجوال المدخل</string>
+    <string name = "send_verification" >ارسال كود التفعيل</string>
+
+
+
+
+</resources>

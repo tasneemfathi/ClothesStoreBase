@@ -1,0 +1,140 @@
+[versions]
+agp = "8.2.2"
+android-compileSdk = "34"
+android-minSdk = "24"
+android-targetSdk = "34"
+androidx-activityCompose = "1.9.1"
+androidx-lifecycle = "2.8.2"
+compose-plugin = "1.7.0"
+kotlin = "2.0.20"
+google-services = "4.4.0"
+
+# Androidx Compose
+compose-bom = "2024.09.02"
+
+
+# Android Specific Libraries
+android-accompanist = "0.36.0"
+splash-screen = "1.0.1"
+
+# Precompose navigation library
+navigation_version = "2.8.0-alpha02"
+navigation_material_version = "1.7.0-alpha04"
+
+#DI With Koin
+koin = "4.0.0"
+
+#Async Image With Coil
+coil3 = "3.0.0-rc01"
+
+#Networing With Ktor
+ktor = "3.0.1"
+
+#DataStore For LocalData
+datastore = "1.1.1"
+kotlin_serialization = "1.7.3"
+kotlin_reflect = "1.7.3"
+
+#Peekaboo
+peekaboo = "0.5.2"
+
+#Alerter
+alerter = "1.0.5"
+
+
+
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-lifecycle-viewmodel = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel", version.ref = "androidx-lifecycle" }
+androidx-lifecycle-runtime-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
+#compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+material3 = { group = "androidx.compose.material3", name = "material3" }
+#ui = { group = "androidx.compose.ui", name = "ui" }
+#animation = { group = "androidx.compose.animation", name = "animation" }
+#androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+
+
+
+# Android Specific Libraries
+android-accompanist = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "android-accompanist" }
+android-splash-screen = { module = "androidx.core:core-splashscreen", version.ref = "splash-screen" }
+
+# Android navigation library
+android_navigation = { module = "org.jetbrains.androidx.navigation:navigation-compose", version.ref = "navigation_version" }
+material_navigation = { module = "androidx.compose.material:material-navigation", version.ref = "navigation_material_version" }
+
+#DI With Koin
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koin" }
+koin-composeVM = { module = "io.insert-koin:koin-compose-viewmodel", version.ref = "koin" }
+
+
+#Networing With Ktor
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+ktor-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
+#Async Image With Coil
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
+coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil3" }
+coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
+coil-mp = { module = "io.coil-kt.coil3:coil", version.ref = "coil3" }
+
+
+#DataStore For LocalData
+datastore = { module = "androidx.datastore:datastore-core", version.ref = "datastore" }
+datastore-preferences = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin_serialization" }
+
+#Peekaboo
+peekaboo-image-picker = { module = "io.github.onseok:peekaboo-image-picker", version.ref = "peekaboo" }
+
+#Android Alerter
+cmp-alerter = { module = "io.github.akardas16:alertercompose", version.ref = "alerter" }
+
+
+
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
+
+
+[bundles]
+ktor = [
+    "ktor-client-core",
+    "ktor-client-content-negotiation",
+    "ktor-client-auth",
+    "ktor-client-logging",
+    "ktor-serialization-kotlinx-json",
+]
+coil = [
+    "coil-compose",
+    "coil-compose-core",
+    "coil-network-ktor",
+    "coil-mp",
+]
+#compose = [
+#    "compose-bom",
+#    "material3",
+#    "ui",
+#    "animation",
+#    "androidx-ui-graphics",
+#    "ui-tooling",
+#    "androidx-ui-graphics",
+#]
