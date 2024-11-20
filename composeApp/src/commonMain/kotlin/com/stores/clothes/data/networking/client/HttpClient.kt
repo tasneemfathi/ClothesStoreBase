@@ -2,6 +2,9 @@ package com.stores.clothes.data.networking.client
 
 import com.stores.clothes.utils.log
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.providers.BearerTokens
+import io.ktor.client.plugins.auth.providers.bearer
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.plugins.logging.LogLevel
@@ -33,20 +36,20 @@ fun createHttpClient(localeStorage: TokenLocaleStorage): HttpClient {
                 prettyPrint = true
             })
         }
-//        install(Auth) {
-//            bearer {
-//                loadTokens {
-//                    if(localeStorage.accessToken()  != null) {
-//                        BearerTokens(
-//                            accessToken = localeStorage.accessToken() ?: "",
-//                            refreshToken = null
-//                        )
-//                    }else{
-//                        null
-//                    }
-//                }
-//            }
-//        }
+        install(Auth) {
+            bearer {
+                loadTokens {
+                    if(localeStorage.accessToken()  != null) {
+                        BearerTokens(
+                            accessToken = localeStorage.accessToken() ?: "",
+                            refreshToken = null
+                        )
+                    }else{
+                        null
+                    }
+                }
+            }
+        }
 
     }
 
