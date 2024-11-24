@@ -1,4 +1,4 @@
-package com.stores.clothes.ui.scence.auth.view.login.sections
+package com.stores.clothes.ui.scence.auth.login.view.sections
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

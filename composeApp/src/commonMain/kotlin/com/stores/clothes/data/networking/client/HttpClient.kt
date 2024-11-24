@@ -1,7 +1,10 @@
 package com.stores.clothes.data.networking.client
 
+import com.stores.clothes.data.datastore.AuthLocaleRepo
 import com.stores.clothes.utils.log
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.api.Send
+import io.ktor.client.plugins.api.createClientPlugin
 import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.providers.BearerTokens
 import io.ktor.client.plugins.auth.providers.bearer
@@ -15,12 +18,12 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-fun createHttpClient(localeStorage: TokenLocaleStorage): HttpClient {
+fun createHttpClient(localeStorage: AuthLocaleRepo): HttpClient {
     return HttpClient(createPlatformHttpClient()) {
         defaultRequest {
             headers.append("language", "ar")
-            headers.append("Accept", "application/json")
-            headers.append("Content-Type", "application/x-www-form-urlencoded")
+            contentType(ContentType.Application.FormUrlEncoded)
+
         }
         install(Logging){
             logger = object : Logger {
@@ -33,7 +36,7 @@ fun createHttpClient(localeStorage: TokenLocaleStorage): HttpClient {
         install(ContentNegotiation){
             json(Json {
                 ignoreUnknownKeys = true
-                prettyPrint = true
+                isLenient = true
             })
         }
         install(Auth) {
@@ -50,6 +53,12 @@ fun createHttpClient(localeStorage: TokenLocaleStorage): HttpClient {
                 }
             }
         }
+        install(createClientPlugin("fix") {
+            on(Send) { request ->
+                request.headers.remove("Accept-Charset")
+                this.proceed(request)
+            }
+        })
 
     }
 

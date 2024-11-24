@@ -1,4 +1,4 @@
-package com.stores.clothes.ui.scence.auth.view.login
+package com.stores.clothes.ui.scence.auth.login.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -17,9 +17,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import clothesappdemo.composeapp.generated.resources.Res
 import clothesappdemo.composeapp.generated.resources.header_shadow
-import com.stores.clothes.ui.scence.auth.view.login.sections.LoginActionSection
-import com.stores.clothes.ui.scence.auth.view.login.sections.LoginFormSection
-import com.stores.clothes.ui.scence.auth.view.login.sections.LoginHeaderSection
+import com.stores.clothes.data.model.config.countries.Country
+import com.stores.clothes.ui.scence.auth.login.view.sections.LoginActionSection
+import com.stores.clothes.ui.scence.auth.login.view.sections.LoginFormSection
+import com.stores.clothes.ui.scence.auth.login.view.sections.LoginHeaderSection
 import com.stores.clothes.ui.theme.PaddingHorizontal
 import com.stores.clothes.utils.wrapper.InputWrapper
 import org.jetbrains.compose.resources.painterResource
@@ -30,6 +31,7 @@ fun LoginScreenContent(
     mobile: InputWrapper,
     isLoginButtonLoading: Boolean,
     isLoginButtonEnabled: Boolean,
+    countries: List<Country>,
     doLogin: () -> Unit
 ) {
     Box(modifier = Modifier.fillMaxSize()){
@@ -37,7 +39,7 @@ fun LoginScreenContent(
         Column (modifier = Modifier.fillMaxSize().systemBarsPadding().padding(top = 40.dp).padding(horizontal = PaddingHorizontal), verticalArrangement = Arrangement.spacedBy(10.dp), horizontalAlignment = Alignment.CenterHorizontally){
             LoginHeaderSection(modifier = Modifier)
             Spacer(Modifier.height(20.dp))
-            LoginFormSection(modifier= Modifier,username,mobile)
+            LoginFormSection(modifier= Modifier,username,mobile,countries)
             Spacer(Modifier.height(20.dp))
             LoginActionSection(modifier = Modifier,isLoginButtonEnabled = isLoginButtonEnabled, isLoginButtonLoading = isLoginButtonLoading,doLogin = doLogin)
         }

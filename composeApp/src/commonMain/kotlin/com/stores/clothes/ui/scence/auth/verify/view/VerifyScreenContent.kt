@@ -1,4 +1,4 @@
-package com.stores.clothes.ui.scence.auth.view.verify
+package com.stores.clothes.ui.scence.auth.verify.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -17,22 +17,23 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import clothesappdemo.composeapp.generated.resources.Res
 import clothesappdemo.composeapp.generated.resources.header_shadow
-import com.stores.clothes.ui.scence.auth.view.verify.sections.VerifyActionSection
-import com.stores.clothes.ui.scence.auth.view.verify.sections.VerifyFormSection
-import com.stores.clothes.ui.scence.auth.view.verify.sections.VerifyHeaderSection
+import com.stores.clothes.ui.scence.auth.verify.view.sections.VerifyActionSection
+import com.stores.clothes.ui.scence.auth.verify.view.sections.VerifyFormSection
+import com.stores.clothes.ui.scence.auth.verify.view.sections.VerifyHeaderSection
 import com.stores.clothes.ui.theme.PaddingHorizontal
+import com.stores.clothes.utils.wrapper.InputWrapper
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun VerifyScreenContent(mobile:String,doVerify:()->Unit,resendCode:()->Unit){
+fun VerifyScreenContent(mobile:String,code:InputWrapper, isButtonLoading: Boolean, isButtonEnabled: Boolean,doVerify:()->Unit,resendCode:()->Unit){
     val isRunning = remember { mutableStateOf(true) }
     Box(modifier = Modifier.fillMaxSize()){
         Image(painter = painterResource(Res.drawable.header_shadow), contentDescription = "", modifier = Modifier.fillMaxWidth().align(
             Alignment.TopEnd), contentScale = ContentScale.FillWidth)
         Column (modifier = Modifier.fillMaxSize().systemBarsPadding().padding(top = 40.dp).padding(horizontal = PaddingHorizontal), verticalArrangement = Arrangement.spacedBy(30.dp), horizontalAlignment = Alignment.CenterHorizontally){
             VerifyHeaderSection(modifier = Modifier , mobile = mobile)
-            VerifyFormSection(modifier = Modifier, isRunning = isRunning, resendCode = resendCode)
-            VerifyActionSection(modifier = Modifier, goVerify = doVerify)
+            VerifyFormSection(modifier = Modifier,code = code, isRunning = isRunning, resendCode = resendCode)
+            VerifyActionSection(modifier = Modifier,isButtonLoading,isButtonEnabled, goVerify = doVerify)
         }
     }
 }

@@ -10,6 +10,13 @@ import org.koin.compose.viewmodel.koinViewModel
 fun IntroScreen(onFinish:()->Unit){
     val viewModel: IntroViewModel = koinViewModel<IntroViewModel>()
     val currentAppLang = viewModel.appLang.collectAsState("ar")
-    IntroScreenContent(viewModel,switchLang = { switchAppLang(currentAppLang, updateAppLang = viewModel::updateAppLang ) }, onFinish = onFinish)
+    IntroScreenContent(
+        viewModel,
+        switchLang = { switchAppLang(currentAppLang, updateAppLang = viewModel::updateAppLang) },
+        onFinish = {
+            viewModel.updateIsFirstLaunch()
+            onFinish()
+        }
+    )
 }
 

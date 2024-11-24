@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun OtpInputBox(
-    otpLength: Int = 6,
+    otpLength: Int = 4,
     modifier: Modifier = Modifier,
     onOtpComplete: (String) -> Unit = {}
 ) {

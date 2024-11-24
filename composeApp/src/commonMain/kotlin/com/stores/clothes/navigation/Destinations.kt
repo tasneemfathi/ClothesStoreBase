@@ -6,4 +6,5 @@ enum class Destinations(val title:String){
         IntroScreen(title = ""),
         LoginScreen(title = ""),
         VerifyScreen(title = ""),
+        HomeScreen(title = ""),
 }

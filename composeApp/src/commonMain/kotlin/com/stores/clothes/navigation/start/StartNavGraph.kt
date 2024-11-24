@@ -11,7 +11,7 @@ import com.stores.clothes.ui.scence.splash.SplashScreen
 
 fun NavGraphBuilder.startNavigationHost(navController: NavHostController) {
     composable(route = Destinations.SplashScreen.toString()){
-        SplashScreen(onFinish = {navController.navigateToIntroScreen()})
+        SplashScreen(onFinish = navController::startApp)
     }
     composable(route = Destinations.IntroScreen.toString()){
         IntroScreen(onFinish = navController::navigateToLoginScreen)

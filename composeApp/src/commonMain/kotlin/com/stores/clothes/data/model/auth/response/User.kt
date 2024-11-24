@@ -28,4 +28,6 @@ data class User(
     val name: String?,
     @SerialName("status")
     val status: String?
-)
+){
+    val isUserEnabled: Boolean = status == "enabled"
+}

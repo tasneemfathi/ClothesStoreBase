@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.stores.clothes.navigation.auth.authNavigationHost
+import com.stores.clothes.navigation.home.homeNavigationHost
 import com.stores.clothes.navigation.start.startNavigationHost
 
 
@@ -13,5 +14,6 @@ fun NavHostGraph(navController: NavHostController,
         NavHost(navController = navController, startDestination = startDestination.toString()){
              startNavigationHost(navController = navController)
              authNavigationHost(navController = navController)
+             homeNavigationHost(navController = navController)
         }
 }

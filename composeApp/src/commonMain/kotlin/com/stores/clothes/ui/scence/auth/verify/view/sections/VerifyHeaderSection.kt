@@ -1,4 +1,4 @@
-package com.stores.clothes.ui.scence.auth.view.verify.sections
+package com.stores.clothes.ui.scence.auth.verify.view.sections
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
@@ -38,7 +39,7 @@ fun VerifyHeaderSection(modifier:Modifier, mobile:String){
         Text(buildAnnotatedString {
             append(stringResource(resource = Res.string.verify_sblbl))
             append("  ")
-            withStyle(style = SpanStyle(color = TextColor, fontStyle = bodyBold.fontStyle)){
+            withStyle(style = SpanStyle(color = TextColor, fontStyle = bodyBold.fontStyle, fontSize = 14.sp , fontWeight = FontWeight.Bold)){
                 append(mobile)
             }
         }, style = body, color = HintColor, textAlign = TextAlign.Center, lineHeight = 25.sp)

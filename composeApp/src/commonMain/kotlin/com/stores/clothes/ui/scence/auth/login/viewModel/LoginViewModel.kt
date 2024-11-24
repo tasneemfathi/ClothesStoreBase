@@ -1,12 +1,15 @@
-package com.stores.clothes.ui.scence.auth.viewModel
+package com.stores.clothes.ui.scence.auth.login.viewModel
 
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.stores.clothes.data.datastore.AppLocaleConfigRepo
+import com.stores.clothes.data.datastore.AuthLocaleRepo
 import com.stores.clothes.data.model.auth.requests.LoginRequest
 import com.stores.clothes.data.model.auth.response.User
+import com.stores.clothes.data.model.config.countries.Country
 import com.stores.clothes.data.networking.repo.AuthRepo
 import com.stores.clothes.data.networking.utils.UiState
 import com.stores.clothes.data.networking.utils.onError
@@ -20,7 +23,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.launch
 
 
-class AuthViewModel (private val authRepo: AuthRepo) : ViewModel() {
+class LoginViewModel (private val authRepo: AuthRepo, private val localRepo: AppLocaleConfigRepo, private val authLocalRepo: AuthLocaleRepo) : ViewModel() {
      var authResponse= MutableStateFlow<UiState<User>>(UiState.IDLE)
          private  set
 
@@ -30,21 +33,35 @@ class AuthViewModel (private val authRepo: AuthRepo) : ViewModel() {
     var isFormValid: MutableState<Boolean> = mutableStateOf(false)
         private set
 
+    var countries:MutableStateFlow<List<Country>> = MutableStateFlow(mutableListOf())
+
     var countryId = MutableStateFlow("1")
 
     init {
+        observeLoginForm()
+        getCountries()
+    }
+
+    private fun observeLoginForm() {
         viewModelScope.launch {
             combine(
-                usernameField.isValid,
-                mobileField.isValid
+                usernameField.isValid.drop(1),
+                mobileField.isValid.drop(1)
             ) { usernameValid, mobileValid ->
                 usernameValid && mobileValid
-            }.collect { isValid ->
+            }.drop(1).collect { isValid ->
                 isFormValid.value = isValid
             }
         }
     }
 
+    private fun getCountries(){
+        viewModelScope.launch {
+            localRepo.countries.collect{
+                countries.value = it
+            }
+        }
+    }
 
     fun login(){
         viewModelScope.launch {
@@ -52,6 +69,7 @@ class AuthViewModel (private val authRepo: AuthRepo) : ViewModel() {
             authRepo.login(LoginRequest(name = usernameField.value, mobile = mobileField.value, countryId = countryId.value))
                 .onSuccess {data ->
                     authResponse.value = UiState.Success(data.user)
+                    if(data.user.isUserEnabled){ authLocalRepo.updateUser(data.user)}
                 }
                 .onError {error ->
                     authResponse.value = UiState.Error(error.name)

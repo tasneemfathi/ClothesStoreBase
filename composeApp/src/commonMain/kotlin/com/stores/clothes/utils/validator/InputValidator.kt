@@ -19,4 +19,12 @@ object Validators {
             else -> null
         }
     }
+
+    fun validateCode(input: String): StringResource? {
+        return when {
+            input.length == 4 ->  null
+            else -> ErrorMessages.ERROR_CODE_LENGTH
+        }
+    }
+
 }

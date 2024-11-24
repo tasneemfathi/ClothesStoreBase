@@ -7,31 +7,31 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Addresse(
     @SerialName("address_number")
-    val addressNumber: String,
+    val addressNumber: String?,
     @SerialName("apartment_number")
-    val apartmentNumber: String,
+    val apartmentNumber: String?,
     @SerialName("city")
-    val city: City,
+    val city: City?,
     @SerialName("country")
-    val country: Country,
+    val country: Country?,
     @SerialName("district_name")
-    val districtName: String,
+    val districtName: String?,
     @SerialName("floor_number")
     val floorNumber: String,
     @SerialName("full_address")
-    val fullAddress: String,
+    val fullAddress: String?,
     @SerialName("id")
     val id: Int,
     @SerialName("international_address")
-    val internationalAddress: String,
+    val internationalAddress: String?,
     @SerialName("latitude")
-    val latitude: Double,
+    val latitude: Double?,
     @SerialName("longitude")
-    val longitude: Double,
+    val longitude: Double?,
     @SerialName("name")
-    val name: String,
+    val name: String?,
     @SerialName("others")
-    val others: String,
+    val others: String?,
     @SerialName("street")
-    val street: String
+    val street: String?
 )

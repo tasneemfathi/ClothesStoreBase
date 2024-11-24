@@ -4,6 +4,7 @@ import com.stores.clothes.data.model.auth.requests.LoginRequest
 import com.stores.clothes.data.model.auth.requests.VerifyRequest
 import com.stores.clothes.data.model.auth.response.UserResponse
 import com.stores.clothes.data.model.config.config.ConfigResponse
+import com.stores.clothes.data.model.config.countries.CountriesResponse
 import io.ktor.util.network.UnresolvedAddressException
 import kotlinx.serialization.SerializationException
 import com.stores.clothes.data.networking.utils.NetworkingError
@@ -46,7 +47,7 @@ class ConfigRepo (private val httpClient: HttpClient){
         return result<ConfigResponse>(response)
     }
 
-    suspend fun getCountries(): Result<UserResponse, NetworkingError> {
+    suspend fun getCountries(): Result<CountriesResponse, NetworkingError> {
         val response = try{
             httpClient.get(EndPoints.GET_BASE_URL+EndPoints.EP_COUNTRIES)
         } catch(e: UnresolvedAddressException) {
@@ -59,7 +60,7 @@ class ConfigRepo (private val httpClient: HttpClient){
             e.printStackTrace()
             return Result.Failure(NetworkingError.REQUEST_TIMEOUT)
         }
-        return result<UserResponse>(response)
+        return result<CountriesResponse>(response)
     }
 
 }

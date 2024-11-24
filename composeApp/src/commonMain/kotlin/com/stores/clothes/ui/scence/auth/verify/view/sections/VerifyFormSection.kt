@@ -1,4 +1,4 @@
-package com.stores.clothes.ui.scence.auth.view.verify.sections
+package com.stores.clothes.ui.scence.auth.verify.view.sections
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,11 +20,16 @@ import com.stores.clothes.ui.theme.HintColor
 import com.stores.clothes.ui.theme.Primary
 import com.stores.clothes.ui.theme.body
 import com.stores.clothes.utils.noRippleClickable
+import com.stores.clothes.utils.wrapper.InputWrapper
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun VerifyFormSection(modifier: Modifier, isRunning: MutableState<Boolean>, resendCode:() -> Unit) {
-    val currentOtp = remember { mutableStateOf<String>("") }
+fun VerifyFormSection(
+    modifier: Modifier,
+    isRunning: MutableState<Boolean>,
+    resendCode: () -> Unit,
+    code: InputWrapper
+) {
     Column(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -34,7 +39,7 @@ fun VerifyFormSection(modifier: Modifier, isRunning: MutableState<Boolean>, rese
             otpLength = 4,
             onOtpComplete = { otp ->
                 // Do something with the OTP (e.g., send to backend)
-                currentOtp.value = otp
+                code.onValueChanged(otp)
             }
         )
 
@@ -43,8 +48,11 @@ fun VerifyFormSection(modifier: Modifier, isRunning: MutableState<Boolean>, rese
         Text(
             text = stringResource(resource = Res.string.resendCode),
             style = body,
-            color = if(isRunning.value) Primary else HintColor,
-            modifier = Modifier.noRippleClickable { if(!isRunning.value){ resendCode() }},
+            color = if(isRunning.value) HintColor else Primary,
+            modifier = Modifier.noRippleClickable { if(!isRunning.value){
+                isRunning.value = !isRunning.value
+                resendCode()
+            }},
             textDecoration = TextDecoration.Underline
         )
     }

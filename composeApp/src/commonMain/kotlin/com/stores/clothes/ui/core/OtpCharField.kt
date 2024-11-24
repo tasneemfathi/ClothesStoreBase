@@ -4,6 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -17,8 +19,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.stores.clothes.ui.theme.CornerRadius
 import com.stores.clothes.ui.theme.PlaceHolderColor
 import com.stores.clothes.ui.theme.title
@@ -31,33 +37,32 @@ fun OtpCharField(
     onCharChange: (String) -> Unit) {
     var isFocused by remember { mutableStateOf(false) }
 
-    BasicTextField(
-        value = char,
-        onValueChange = { newChar ->
-            if (newChar.length <= 1) {
-                onCharChange(newChar)
-            }
-        },
-        modifier = Modifier
-            .size(width = 80.dp, height = 60.dp)
-            .background(
-                color = PlaceHolderColor,
-                shape = RoundedCornerShape(size = CornerRadius)
-            )
-            .focusRequester(focusRequester) // Attach FocusRequester here
-            .onFocusChanged { focusState ->
-                isFocused =focusState.isFocused
-
+    Box(Modifier
+        .size(width = 80.dp, height = 60.dp)
+        .background(
+            color = PlaceHolderColor,
+            shape = RoundedCornerShape(size = CornerRadius)
+        )
+    , contentAlignment = Alignment.Center){
+        BasicTextField(
+            value = char,
+            onValueChange = { newChar ->
+                if (newChar.length <= 1) {
+                    onCharChange(newChar)
+                }
             },
-        textStyle = title,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
-    ) { innerTextField ->
-        Box(
-            contentAlignment = Alignment.Center,
             modifier = Modifier
-                .size(width = 80.dp, height = 60.dp) ) {
-            innerTextField()
+                .focusRequester(focusRequester) // Attach FocusRequester here
+                .onFocusChanged { focusState ->
+                    isFocused =focusState.isFocused
+
+                },
+            textStyle = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+        ) { innerTextField ->
+                innerTextField()
         }
     }
+
 
 }

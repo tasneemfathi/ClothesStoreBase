@@ -15,14 +15,18 @@ fun createDataStore(producePath: () -> String): DataStore<Preferences> {
 }
 
 internal const val DATA_STORE_FILE_NAME = "prefs.preferences_pb"
-internal const val DATA_STORE_PROFILE = "profile_key"
+internal const val DATA_STORE_CONFIG = "config_key"
+internal const val DATA_STORE_USER = "user_key"
+internal const val DATA_STORE_COUNTRIES = "countries_key"
 internal const val DATA_STORE_FIRST_LAUNCH = "is_first_launch"
 internal const val DATA_STORE_LANG = "lang_key"
 internal const val DATA_STORE_AUTH_TOKEN = "auth_token"
 
 object PreferencesKeys {
     val authKeys = stringPreferencesKey(DATA_STORE_AUTH_TOKEN)
-    val profileKeys = stringPreferencesKey(DATA_STORE_PROFILE)
+    val userKeys = stringPreferencesKey(DATA_STORE_USER)
+    val configKeys = stringPreferencesKey(DATA_STORE_CONFIG)
+    val countriesKeys = stringPreferencesKey(DATA_STORE_COUNTRIES)
     val firstLaunchKeys = booleanPreferencesKey(DATA_STORE_FIRST_LAUNCH)
     val langKeys = stringPreferencesKey(DATA_STORE_LANG)
 }
